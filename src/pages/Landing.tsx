@@ -16,10 +16,10 @@ const Landing = () => {
             Empowering Young Kenyans to Take Climate Action Through AI, Gamification, and Community
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6">
+            <Button onClick={() => window.location.href = '/dashboard'} size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6">
               Start Learning
             </Button>
-            <Button size="lg" variant="outline" className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 text-lg px-8 py-6">
+            <Button onClick={() => window.location.href = '/auth'} size="lg" variant="outline" className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 text-lg px-8 py-6">
               Login / Signup
             </Button>
           </div>
@@ -170,7 +170,7 @@ const Landing = () => {
               <p className="text-muted-foreground">Real events and challenges create tangible impact</p>
             </div>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-12 py-6">
+          <Button onClick={() => window.location.href = '/auth'} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-12 py-6">
             Join EcoVibes Today
           </Button>
         </div>
