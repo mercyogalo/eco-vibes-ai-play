@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import api from "../utils/api";
 
 interface Message {
   role: "user" | "assistant";
@@ -17,7 +18,8 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm EcoBot 🌱 How can I help you today? Ask me about the platform, environmental tips, or anything eco-related!",
+      content:
+        "Hi! I'm EcoBot 🌱 How can I help you today? Ask me about the platform, environmental tips, or anything eco-related!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -26,119 +28,67 @@ const Chatbot = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
+  // Fetch user profile from Supabase
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
       if (session?.user) {
         const { data } = await supabase
           .from("profiles")
           .select("*")
           .eq("id", session.user.id)
           .single();
+
         setUserProfile(data);
       }
     };
     fetchUserProfile();
   }, []);
 
+  // Auto-scroll to latest message
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
 
-  const streamChat = async (messages: Message[]) => {
-    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/eco-chatbot`;
-    
-    const response = await fetch(CHAT_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-      },
-      body: JSON.stringify({ messages, userProfile }),
-    });
-
-    if (!response.ok) {
-      if (response.status === 429) {
-        throw new Error("Rate limit exceeded. Please try again in a moment.");
-      }
-      if (response.status === 402) {
-        throw new Error("AI service temporarily unavailable. Please try again later.");
-      }
-      throw new Error("Failed to get response from AI");
-    }
-
-    return response;
-  };
-
+  // Send message to backend
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
+
+    const userInput = input;
     setInput("");
     setIsLoading(true);
 
     try {
-      const response = await streamChat([...messages, userMessage]);
-      
-      if (!response.body) throw new Error("No response body");
+      // --- CALL BACKEND ---
+      const res = await api.post("/chat", {
+        query: userInput,
+        userProfile,
+      });
 
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let assistantMessage = "";
-      let textBuffer = "";
+      const assistantReply =
+        res.data.reply || "Sorry, I couldn't understand that.";
 
-      // Add placeholder for assistant message
-      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        
-        textBuffer += decoder.decode(value, { stream: true });
-
-        let newlineIndex: number;
-        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
-          let line = textBuffer.slice(0, newlineIndex);
-          textBuffer = textBuffer.slice(newlineIndex + 1);
-
-          if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (line.startsWith(":") || line.trim() === "") continue;
-          if (!line.startsWith("data: ")) continue;
-
-          const jsonStr = line.slice(6).trim();
-          if (jsonStr === "[DONE]") break;
-
-          try {
-            const parsed = JSON.parse(jsonStr);
-            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
-            if (content) {
-              assistantMessage += content;
-              setMessages((prev) => {
-                const newMessages = [...prev];
-                newMessages[newMessages.length - 1] = {
-                  role: "assistant",
-                  content: assistantMessage,
-                };
-                return newMessages;
-              });
-            }
-          } catch {
-            textBuffer = line + "\n" + textBuffer;
-            break;
-          }
-        }
-      }
-    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: assistantReply },
+      ]);
+    } catch (error: any) {
       console.error("Chat error:", error);
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to send message",
+        description:
+          error?.response?.data?.message ||
+          "Failed to get a response from the server",
         variant: "destructive",
       });
-      setMessages((prev) => prev.slice(0, -1));
     } finally {
       setIsLoading(false);
     }
@@ -189,7 +139,11 @@ const Chatbot = () => {
               {messages.map((message, index) => (
                 <div
                   key={index}
-                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex ${
+                    message.role === "user"
+                      ? "justify-end"
+                      : "justify-start"
+                  }`}
                 >
                   <div
                     className={`max-w-[80%] rounded-lg px-4 py-2 ${
@@ -198,10 +152,13 @@ const Chatbot = () => {
                         : "bg-secondary text-secondary-foreground"
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-sm whitespace-pre-wrap">
+                      {message.content}
+                    </p>
                   </div>
                 </div>
               ))}
+
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-secondary text-secondary-foreground rounded-lg px-4 py-2">
