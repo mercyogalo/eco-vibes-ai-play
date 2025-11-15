@@ -70,7 +70,7 @@ const Chatbot = () => {
       // --- CALL BACKEND ---
       const res = await api.post("/chat", {
         query: userInput,
-        userProfile,
+       userId: userProfile?.id,
       });
 
       const assistantReply =
