@@ -13,49 +13,39 @@ import Events from "./pages/Events";
 import Challenges from "./pages/Challenges";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
+import EnvironmentalRadar from "./pages/EnvironmentalRadar";
+import EcoExposed from "./pages/EcoExposed";
+import VideoCreator from "./pages/VideoCreator";
+import ImpactTracker from "./pages/ImpactTracker";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  const [session, setSession] = useState(null);
-
-  // Track Supabase auth state
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session);
-    });
-
-    // Listen for login/logout changes
-    supabase.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
-    });
-  }, []);
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/challenges" element={<Challenges />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-
-        
-          {session && <Chatbot />}
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/challenges" element={<Challenges />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/radar" element={<EnvironmentalRadar />} />
+          <Route path="/exposed" element={<EcoExposed />} />
+          <Route path="/video-creator" element={<VideoCreator />} />
+          <Route path="/impact" element={<ImpactTracker />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Chatbot />
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
