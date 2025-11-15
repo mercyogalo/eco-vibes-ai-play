@@ -57,6 +57,18 @@ const Navbar = () => {
                 <Link to="/community" className={`hover:text-secondary transition ${isActive("/community") ? "text-secondary font-semibold" : ""}`}>
                   Community
                 </Link>
+                <Link to="/radar" className={`hover:text-secondary transition ${isActive("/radar") ? "text-secondary font-semibold" : ""}`}>
+                  Radar
+                </Link>
+                <Link to="/exposed" className={`hover:text-secondary transition ${isActive("/exposed") ? "text-secondary font-semibold" : ""}`}>
+                  EcoExposed
+                </Link>
+                <Link to="/video-creator" className={`hover:text-secondary transition ${isActive("/video-creator") ? "text-secondary font-semibold" : ""}`}>
+                  Videos
+                </Link>
+                <Link to="/impact" className={`hover:text-secondary transition ${isActive("/impact") ? "text-secondary font-semibold" : ""}`}>
+                  Impact
+                </Link>
                 <Link to="/profile" className={`hover:text-secondary transition ${isActive("/profile") ? "text-secondary font-semibold" : ""}`}>
                   <User className="w-5 h-5" />
                 </Link>
@@ -96,6 +108,18 @@ const Navbar = () => {
                 </Link>
                 <Link to="/community" className="block py-2 hover:text-secondary transition" onClick={() => setIsOpen(false)}>
                   Community
+                </Link>
+                <Link to="/radar" className="block py-2 hover:text-secondary transition" onClick={() => setIsOpen(false)}>
+                  Environmental Radar
+                </Link>
+                <Link to="/exposed" className="block py-2 hover:text-secondary transition" onClick={() => setIsOpen(false)}>
+                  EcoExposed
+                </Link>
+                <Link to="/video-creator" className="block py-2 hover:text-secondary transition" onClick={() => setIsOpen(false)}>
+                  Video Creator
+                </Link>
+                <Link to="/impact" className="block py-2 hover:text-secondary transition" onClick={() => setIsOpen(false)}>
+                  Impact Tracker
                 </Link>
                 <Link to="/profile" className="block py-2 hover:text-secondary transition" onClick={() => setIsOpen(false)}>
                   Profile

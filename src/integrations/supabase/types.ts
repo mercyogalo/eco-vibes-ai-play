@@ -123,6 +123,98 @@ export type Database = {
           },
         ]
       }
+      eco_reports: {
+        Row: {
+          category: string
+          created_at: string | null
+          description: string
+          id: string
+          image_urls: string[] | null
+          location: string
+          status: string | null
+          title: string
+          upvotes: number | null
+          user_id: string | null
+          video_url: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          description: string
+          id?: string
+          image_urls?: string[] | null
+          location: string
+          status?: string | null
+          title: string
+          upvotes?: number | null
+          user_id?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          description?: string
+          id?: string
+          image_urls?: string[] | null
+          location?: string
+          status?: string | null
+          title?: string
+          upvotes?: number | null
+          user_id?: string | null
+          video_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "eco_reports_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      environmental_alerts: {
+        Row: {
+          action_needed: string | null
+          alert_date: string
+          category: string
+          created_at: string | null
+          description: string
+          id: string
+          location: string | null
+          responsible_party: string | null
+          severity: string
+          source: string | null
+          title: string
+        }
+        Insert: {
+          action_needed?: string | null
+          alert_date: string
+          category: string
+          created_at?: string | null
+          description: string
+          id?: string
+          location?: string | null
+          responsible_party?: string | null
+          severity: string
+          source?: string | null
+          title: string
+        }
+        Update: {
+          action_needed?: string | null
+          alert_date?: string
+          category?: string
+          created_at?: string | null
+          description?: string
+          id?: string
+          location?: string | null
+          responsible_party?: string | null
+          severity?: string
+          source?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       event_participants: {
         Row: {
           attended: boolean | null
@@ -204,6 +296,69 @@ export type Database = {
         }
         Relationships: []
       }
+      petition_signatures: {
+        Row: {
+          created_at: string | null
+          id: string
+          petition_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          petition_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          petition_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "petition_signatures_petition_id_fkey"
+            columns: ["petition_id"]
+            isOneToOne: false
+            referencedRelation: "petitions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "petition_signatures_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      petitions: {
+        Row: {
+          created_at: string | null
+          description: string
+          goal: number
+          id: string
+          signatures_count: number | null
+          title: string
+        }
+        Insert: {
+          created_at?: string | null
+          description: string
+          goal: number
+          id?: string
+          signatures_count?: number | null
+          title: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string
+          goal?: number
+          id?: string
+          signatures_count?: number | null
+          title?: string
+        }
+        Relationships: []
+      }
       post_likes: {
         Row: {
           created_at: string | null
@@ -273,6 +428,45 @@ export type Database = {
         }
         Relationships: []
       }
+      report_verifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          report_id: string | null
+          user_id: string | null
+          verified: boolean
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          report_id?: string | null
+          user_id?: string | null
+          verified: boolean
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          report_id?: string | null
+          user_id?: string | null
+          verified?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "report_verifications_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "eco_reports"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "report_verifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_badges: {
         Row: {
           badge_id: string | null
@@ -302,6 +496,47 @@ export type Database = {
           },
           {
             foreignKeyName: "user_badges_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      video_content: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          platform: string | null
+          title: string
+          user_id: string | null
+          video_url: string | null
+          views: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          platform?: string | null
+          title: string
+          user_id?: string | null
+          video_url?: string | null
+          views?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          platform?: string | null
+          title?: string
+          user_id?: string | null
+          video_url?: string | null
+          views?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "video_content_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"

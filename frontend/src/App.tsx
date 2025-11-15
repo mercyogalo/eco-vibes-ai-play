@@ -10,6 +10,10 @@ import Events from "./pages/Events";
 import Challenges from "./pages/Challenges";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
+import EnvironmentalRadar from "./pages/EnvironmentalRadar";
+import EcoExposed from "./pages/EcoExposed";
+import VideoCreator from "./pages/VideoCreator";
+import ImpactTracker from "./pages/ImpactTracker";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
 
@@ -29,6 +33,10 @@ const App = () => (
           <Route path="/challenges" element={<Challenges />} />
           <Route path="/community" element={<Community />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/radar" element={<EnvironmentalRadar />} />
+          <Route path="/exposed" element={<EcoExposed />} />
+          <Route path="/video-creator" element={<VideoCreator />} />
+          <Route path="/impact" element={<ImpactTracker />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Chatbot />
