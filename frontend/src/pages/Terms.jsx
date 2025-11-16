@@ -1,86 +1,92 @@
 import React from "react";
+import Footer from "../components/Footer";
 
 export default function TermsOfService() {
   return (
-    <div className="max-w-4xl mx-auto py-10 px-6">
-      <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
+    <>
+      <div className="max-w-4xl mx-auto py-16 px-6 space-y-12">
+        <h1 className="text-4xl font-extrabold text-green-800 mb-6 text-center">
+          Terms of Service
+        </h1>
 
-      <p className="mb-4">
-        Welcome to EcoVibes. By accessing or using our platform, you agree to
-        comply with and be bound by the following Terms of Service. Please read
-        them carefully.
-      </p>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          Welcome to <span className="font-semibold">EcoVibes</span>. By accessing or using our platform, you agree to comply with and be bound by these Terms of Service. Please read carefully, as they explain your rights, responsibilities, and how our platform works.
+        </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">1. Acceptance of Terms</h2>
-      <p className="mb-4">
-        By using EcoVibes (the “Service”), you agree to these Terms of Service
-        and our Privacy Policy. If you do not agree, please discontinue use of
-        the platform.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Acceptance of Terms</h2>
+          <p className="text-gray-700 leading-relaxed">
+            By using <span className="font-semibold">EcoVibes</span> (the “Service”), you agree to these Terms of Service and our Privacy Policy. If you do not agree, you should not use our platform.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">2. Description of Service</h2>
-      <p className="mb-4">
-        EcoVibes provides tools that help users generate environmental awareness
-        videos, educational content, and sustainability-focused materials using AI.
-        The platform may integrate third-party services such as TikTok for sharing
-        or login functionality.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">What EcoVibes Does</h2>
+          <p className="text-gray-700 leading-relaxed">
+            EcoVibes helps users create and share environmental awareness content, educational materials, and sustainability-focused videos using AI. It may connect with platforms like TikTok for sharing or login functionality.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">3. User Responsibilities</h2>
-      <p className="mb-4">
-        You agree not to misuse the Service, upload harmful content, violate
-        intellectual property rights, or use the platform for illegal activities.
-        You are responsible for the content you create and share.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Your Responsibilities</h2>
+          <p className="text-gray-700 leading-relaxed">
+            You agree to use the Service responsibly. Do not upload harmful content, violate intellectual property rights, or use the platform for illegal activities. You are responsible for all content you create and share.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">4. AI-Generated Content</h2>
-      <p className="mb-4">
-        EcoVibes uses AI models to generate text, video ideas, summaries, and
-        descriptions. While we strive for accuracy, AI-generated content may contain
-        errors or limitations. You are responsible for reviewing any AI output
-        before publishing or sharing it.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">AI-Generated Content</h2>
+          <p className="text-gray-700 leading-relaxed">
+            EcoVibes uses AI to generate ideas, summaries, videos, and descriptions. AI may have errors or limitations, so review any output before sharing or publishing it.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">5. Third-Party Integrations</h2>
-      <p className="mb-4">
-        Our Service may integrate third-party platforms such as TikTok for login,
-        publishing, or data exchange. Your use of those platforms is subject to
-        their own Terms of Service and policies.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Third-Party Integrations</h2>
+          <p className="text-gray-700 leading-relaxed">
+            Our platform may integrate with TikTok and other services. Use of those platforms is subject to their own policies and Terms of Service.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">6. Data & Privacy</h2>
-      <p className="mb-4">
-        EcoVibes collects minimal information necessary to operate the platform,
-        such as your name, email, and content preferences. We do not sell or share
-        personal data with unauthorized parties. Please review our Privacy Policy
-        for full details.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Data and Privacy</h2>
+          <p className="text-gray-700 leading-relaxed">
+            EcoVibes collects minimal information such as your name, email, and content preferences to operate the platform. We do not sell or share personal information with unauthorized parties. See our Privacy Policy for full details.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">7. Intellectual Property</h2>
-      <p className="mb-4">
-        All branding, designs, logos, and platform features belong to EcoVibes.
-        Users retain rights to content they create. You must not copy, resell, or
-        distribute any part of the Service without permission.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Intellectual Property</h2>
+          <p className="text-gray-700 leading-relaxed">
+            All branding, logos, and platform features belong to EcoVibes. Users keep rights to content they create. Do not copy, resell, or distribute our platform without permission.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">8. Termination</h2>
-      <p className="mb-4">
-        We reserve the right to suspend or terminate accounts that violate these
-        Terms or engage in harmful activity.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Account Termination</h2>
+          <p className="text-gray-700 leading-relaxed">
+            EcoVibes may suspend or terminate accounts that violate these Terms or engage in harmful activity.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">9. Changes to Terms</h2>
-      <p className="mb-4">
-        EcoVibes may update these Terms from time to time. When we make changes, we will update the “Last Updated” date. If any changes are made, you will have the choice to continue using our platform or stop using it. It’s entirely your decision.
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Changes to Terms</h2>
+          <p className="text-gray-700 leading-relaxed">
+            We may update these Terms occasionally. If we make changes, you will be notified and given the choice to continue using the platform or stop. It’s entirely up to you.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-2">10. Contact Us</h2>
-      <p className="mb-4">
-        If you have any questions regarding these Terms of Service, please contact
-        us at:
-      </p>
+        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
+          <h2 className="font-bold text-xl text-green-900 mb-2">Contact Us</h2>
+          <p className="text-gray-700 leading-relaxed">
+            If you have any questions about these Terms, reach out to us at: <br />
+            <span className="font-semibold">support@ecovibes.com</span> <br />
+            <span className="font-semibold">Nairobi, Kenya</span>
+          </p>
+        </section>
+      </div>
 
-      <p className="font-medium">support@ecovibes.com</p>
-    </div>
+      <Footer />
+    </>
   );
 }

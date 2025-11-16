@@ -20,6 +20,7 @@ import ImpactTracker from "./pages/ImpactTracker";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
 import TermsOfService from "./pages/Terms";
+import PrivacyPolicy from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
@@ -53,7 +54,8 @@ const AppContent = () => {
     <>
       <Routes>
         <Route path="/" element={<Index />} />
-         <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/events" element={<Events />} />

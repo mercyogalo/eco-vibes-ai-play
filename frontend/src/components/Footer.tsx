@@ -23,7 +23,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Home Page</Link></li>
               <li><Link to="/video-creator" className="text-sm text-muted-foreground hover:text-primary transition-colors">Video Creator</Link></li>
               <li><Link to="/challenges" className="text-sm text-muted-foreground hover:text-primary transition-colors">EcoChallenges</Link></li>
               <li><Link to="/community" className="text-sm text-muted-foreground hover:text-primary transition-colors">Community</Link></li>
@@ -34,7 +34,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Resources</h3>
             <ul className="space-y-2">
-              <li><Link to="/help" className="text-sm text-muted-foreground hover:text-primary transition-colors">Help Center</Link></li>
+              <li><Link to="/privacypolicy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy policy</Link></li>
               <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
               <li><Link to="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
               <li><Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
