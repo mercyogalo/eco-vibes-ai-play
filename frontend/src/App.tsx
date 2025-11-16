@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -19,8 +19,58 @@ import VideoCreator from "./pages/VideoCreator";
 import ImpactTracker from "./pages/ImpactTracker";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
+import TermsOfService from "./pages/Terms";
 
 const queryClient = new QueryClient();
+
+const AppContent = () => {
+  const location = useLocation();
+  const [user, setUser] = useState(null);
+
+ 
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getSession();
+      setUser(data.session?.user || null);
+    };
+
+    checkUser();
+
+   
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+ 
+  const hideChatbot = location.pathname === "/auth" || !user;
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Index />} />
+         <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/challenges" element={<Challenges />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/radar" element={<EnvironmentalRadar />} />
+        <Route path="/exposed" element={<EcoExposed />} />
+        <Route path="/video-creator" element={<VideoCreator />} />
+        <Route path="/impact" element={<ImpactTracker />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      {!hideChatbot && <Chatbot />}
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -28,21 +78,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/challenges" element={<Challenges />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/radar" element={<EnvironmentalRadar />} />
-          <Route path="/exposed" element={<EcoExposed />} />
-          <Route path="/video-creator" element={<VideoCreator />} />
-          <Route path="/impact" element={<ImpactTracker />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Chatbot />
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

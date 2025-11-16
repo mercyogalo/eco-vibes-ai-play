@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Leaf, Users, Trophy, Video, Calendar, TrendingUp } from "lucide-react";
+import Footer from '../components/Footer';
 
 const Landing = () => {
   return (
@@ -176,13 +177,7 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-lg mb-2">EcoVibes - Empowering Climate Action in Kenya</p>
-          <p className="text-sm text-primary-foreground/70">© 2024 EcoVibes. Making the planet greener, one action at a time.</p>
-        </div>
-      </footer>
+     <Footer />
     </div>
   );
 };

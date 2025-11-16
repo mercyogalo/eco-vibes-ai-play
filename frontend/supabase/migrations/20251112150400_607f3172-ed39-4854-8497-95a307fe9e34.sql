@@ -220,3 +220,7 @@ INSERT INTO public.events (title, description, location, event_date, max_partici
   ('CBD Clean-Up Drive', 'Help keep Nairobi clean! Join our monthly clean-up drive in the city center.', 'Central Business District, Nairobi', NOW() + INTERVAL '14 days', 100, 'trash_picking', 50),
   ('Climate Action Workshop', 'Learn about climate change impacts in Kenya and what you can do to help.', 'iHub Nairobi', NOW() + INTERVAL '5 days', 30, 'workshop', 40),
   ('Sustainable Gardening 101', 'Start your own eco-friendly garden! Learn composting, water conservation, and more.', 'Nairobi Arboretum', NOW() + INTERVAL '10 days', 25, 'gardening', 60);
+
+
+
+  
