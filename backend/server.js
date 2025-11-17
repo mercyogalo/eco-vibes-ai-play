@@ -41,5 +41,5 @@ mongoose.connect(process.env.MONGO_URI,{})
 .catch((err)=>console.log("The error is", err));
 
 
-// Run scraper every 6 hours
-cron.schedule("0 */6 * * *", () => runScraper());
+// Run scraper every 2 hours
+cron.schedule("0 */2 * * *", () => runScraper());
