@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, FileText, Video } from "lucide-react";
+import api from "../utils/api";
 
 interface Policy {
   _id: string;
@@ -12,7 +13,7 @@ interface Policy {
   videoUrl: string;
   date: string;
   source: string;
-  isNegative: boolean;
+  status: string; // "POSITIVE" | "NEGATIVE" | "UNKNOWN"
 }
 
 const EnvironmentalRadar = () => {
@@ -25,11 +26,9 @@ const EnvironmentalRadar = () => {
 
   const fetchPolicies = async () => {
     setLoading(true);
-
     try {
-      const res = await fetch("http://localhost:5000/api/policies");
-      const data = await res.json();
-
+      const res = await api.get("/policies/");
+      const data = await res.data;
       if (Array.isArray(data)) {
         setPolicies(
           data.sort(
@@ -40,7 +39,6 @@ const EnvironmentalRadar = () => {
     } catch (err) {
       console.error("Fetch error:", err);
     }
-
     setLoading(false);
   };
 
@@ -48,7 +46,6 @@ const EnvironmentalRadar = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-
         <h1 className="text-4xl font-bold text-foreground mb-2 flex items-center gap-2">
           <AlertTriangle className="w-10 h-10 text-destructive" />
           Environmental Radar
@@ -76,12 +73,14 @@ const EnvironmentalRadar = () => {
                   <div className="flex justify-between items-start mb-2">
                     <Badge
                       className={
-                        policy.isNegative
+                        policy.status === "NEGATIVE"
                           ? "bg-red-600 text-white"
-                          : "bg-green-600 text-white"
+                          : policy.status === "POSITIVE"
+                          ? "bg-green-600 text-white"
+                          : "bg-gray-400 text-white"
                       }
                     >
-                      {policy.isNegative ? "Negative Impact" : "Positive Impact"}
+                      {policy.status || "UNKNOWN"}
                     </Badge>
                     <span className="text-sm text-muted-foreground">
                       {new Date(policy.date).toLocaleDateString()}

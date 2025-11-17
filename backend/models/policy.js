@@ -7,7 +7,8 @@ const PolicySchema = new mongoose.Schema(
     source: String,
     date: Date,
     videoPath: String,
-    status: { type: String, enum: ["PASSED", "PROPOSED", "UNKNOWN"], default: "UNKNOWN" },
+    status: { type: String, enum: ["POSITIVE", "NEGATIVE"], default: "POSITIVE" },
+    progress: { type: String, enum: ["PASSED", "PROPOSED", "UNKNOWN"], default: "UNKNOWN" },
     link: { type: String, unique: true }
   },
   { timestamps: true }
