@@ -41,8 +41,8 @@ const Index = () => {
       {/* Hero Section - Full Screen */}
       <section className="min-h-screen flex items-center justify-center relative px-6">
         {/* Orb Background Effect */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-40">
-          <div style={{ width: '100%', height: '100%', maxWidth: '1200px', maxHeight: '1200px' }}>
+        <div className="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none">
+          <div className="pointer-events-auto" style={{ width: '100%', height: '100%', maxWidth: '1200px', maxHeight: '1200px' }}>
             <Orb
               hoverIntensity={0.5}
               rotateOnHover={true}
@@ -56,7 +56,7 @@ const Index = () => {
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="max-w-2xl mx-auto text-center space-y-6 relative z-10"
+          className="max-w-2xl mx-auto text-center space-y-6 relative z-10 pointer-events-auto"
         >
           <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-tight">
             Empowering Kenya for a <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Greener Future</span>
