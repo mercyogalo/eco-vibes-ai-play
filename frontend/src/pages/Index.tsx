@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Leaf, Globe, Shield, Users, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   const fadeIn = {
@@ -22,6 +23,7 @@ const Index = () => {
           <span>EcoPulse</span>
         </div>
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <Link to="/auth">
             <Button variant="ghost" className="text-foreground hover:text-primary">Login</Button>
           </Link>

@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -107,7 +108,10 @@ const Sidebar = () => {
                 </nav>
             </div>
 
-            <div className="p-4 border-t border-sidebar-border">
+            <div className="p-4 border-t border-sidebar-border space-y-2">
+                <div className={cn("flex", isCollapsed ? "justify-center" : "justify-start")}>
+                    <ThemeToggle />
+                </div>
                 <Button
                     variant="ghost"
                     className={cn(

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import MobileNav from "./MobileNav";
 import { Leaf } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Layout = () => {
     return (
@@ -18,7 +19,7 @@ const Layout = () => {
                         <Leaf className="w-6 h-6" />
                         <span>EcoPulse</span>
                     </div>
-                    {/* Add User Avatar or Notifications here if needed */}
+                    <ThemeToggle />
                 </header>
 
                 {/* Page Content */}

@@ -25,6 +25,7 @@ import PrivacyPolicy from "./pages/Privacy";
 const queryClient = new QueryClient();
 
 import Layout from "./components/Layout";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const AppContent = () => {
   return (
@@ -55,13 +56,15 @@ const AppContent = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider defaultTheme="dark">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
