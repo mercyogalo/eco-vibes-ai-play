@@ -1,113 +1,118 @@
 import React from "react";
 import Footer from "../components/Footer";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Card, CardContent } from "@/components/ui/card";
+import { Shield, Lock, Eye, Share2, UserCheck, Globe } from "lucide-react";
 
 const PrivacyPolicy = () => {
   return (
-    <>
-      <div className="max-w-4xl mx-auto py-16 px-6 space-y-12">
-        <h1 className="text-4xl font-extrabold text-green-800 text-center mb-6">
-          Privacy Policy
-        </h1>
+    <div className="min-h-screen bg-background flex flex-col">
+      <div className="flex-1">
+        <div className="max-w-4xl mx-auto py-16 px-6 space-y-12">
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl font-extrabold text-primary mb-2">
+              Privacy Policy
+            </h1>
+            <p className="text-muted-foreground text-lg">
+              Last Updated: November 16, 2025
+            </p>
+            <p className="text-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+              <span className="font-semibold text-primary">EcoPulse</span> values your privacy. This policy explains how we protect your data while you protect the planet.
+            </p>
+          </div>
 
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Last Updated: November 16, 2025
-        </p>
+          <div className="grid gap-8">
+            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+              <CardContent className="p-8 space-y-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                    <Eye className="w-6 h-6" />
+                  </div>
+                  <h2 className="font-bold text-xl text-foreground">Information We Collect</h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  We collect only what's necessary to empower your eco-journey:
+                </p>
+                <ul className="grid gap-3 mt-2 text-muted-foreground">
+                  <li className="flex gap-2"><span className="font-semibold text-foreground">Personal Info:</span> Name, email, and contact details for your account.</li>
+                  <li className="flex gap-2"><span className="font-semibold text-foreground">Content Data:</span> Your reports, videos, and posts shared on the platform.</li>
+                  <li className="flex gap-2"><span className="font-semibold text-foreground">Usage Data:</span> How you interact with our features to help us improve.</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-        <p className="text-gray-700 text-lg leading-relaxed">
-          <span className="font-semibold">EcoVibes</span> (“we”, “our”, “us”) values your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our website and services. We aim to make it simple and clear for everyone.
-        </p>
+            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+              <CardContent className="p-8 space-y-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <h2 className="font-bold text-xl text-foreground">How We Use Your Data</h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  Your data fuels the movement. We use it to:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-2">
+                  <li>Provide, maintain, and enhance the EcoPulse platform.</li>
+                  <li>Personalize your experience and recommend relevant eco-actions.</li>
+                  <li>Connect you with local events and community initiatives.</li>
+                  <li>Analyze impact metrics to show collective progress.</li>
+                </ul>
+              </CardContent>
+            </Card>
 
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Information We Collect</h2>
-          <p className="text-gray-700 leading-relaxed">
-            We collect only the information necessary to provide our services. This includes:
-          </p>
-          <ul className="list-disc list-inside mt-2 text-gray-700 leading-relaxed space-y-1">
-            <li><strong>Personal Information:</strong> Name, email address, and contact details when you sign up or reach out to us.</li>
-            <li><strong>Content Data:</strong> Photos, short videos, text reports, or AI-generated content you upload.</li>
-            <li><strong>Usage Data:</strong> IP address, browser type, device info, and interactions with our platform.</li>
-            <li><strong>Cookies & Tracking:</strong> We use cookies and similar tech to improve your experience and analyze usage.</li>
-          </ul>
-        </section>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                      <Share2 className="w-5 h-5" />
+                    </div>
+                    <h2 className="font-bold text-lg text-foreground">Data Sharing</h2>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    We do not sell your data. We only share it with service providers who help us operate, or when you explicitly choose to share content publicly.
+                  </p>
+                </CardContent>
+              </Card>
 
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">How We Use Your Information</h2>
-          <p className="text-gray-700 leading-relaxed">
-            Your data helps us operate and improve EcoVibes. We use it to:
-          </p>
-          <ul className="list-disc list-inside mt-2 text-gray-700 leading-relaxed space-y-1">
-            <li>Provide and maintain the platform and services.</li>
-            <li>Respond to inquiries and send important updates.</li>
-            <li>Improve content, features, and user experience.</li>
-            <li>Personalize content and recommendations for you.</li>
-            <li>Comply with legal obligations.</li>
-          </ul>
-        </section>
+              <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                      <UserCheck className="w-5 h-5" />
+                    </div>
+                    <h2 className="font-bold text-lg text-foreground">Your Rights</h2>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    You have full control. Access, update, or delete your data anytime. Manage your preferences in your profile settings.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
 
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Sharing Your Information</h2>
-          <p className="text-gray-700 leading-relaxed">
-            We respect your privacy and do not sell your data. We may share information with:
-          </p>
-          <ul className="list-disc list-inside mt-2 text-gray-700 leading-relaxed space-y-1">
-            <li>Service providers who help operate our platform.</li>
-            <li>Legal authorities if required by law.</li>
-            <li>Other users when you submit public content like photos, videos, or reports.</li>
-          </ul>
-        </section>
-
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Security</h2>
-          <p className="text-gray-700 leading-relaxed">
-            We use reasonable technical and organizational measures to protect your information. However, no method of internet transmission or storage is 100% secure.
-          </p>
-        </section>
-
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Your Choices</h2>
-          <p className="text-gray-700 leading-relaxed">
-            You have control over your data:
-          </p>
-          <ul className="list-disc list-inside mt-2 text-gray-700 leading-relaxed space-y-1">
-            <li>Update or delete your account information anytime.</li>
-            <li>Opt out of marketing emails.</li>
-            <li>Manage cookies via your browser settings.</li>
-          </ul>
-        </section>
-
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Children’s Privacy</h2>
-          <p className="text-gray-700 leading-relaxed">
-            EcoVibes is not intended for children under 13. We do not knowingly collect personal information from children.
-          </p>
-        </section>
-
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Third-Party Services</h2>
-          <p className="text-gray-700 leading-relaxed">
-            We may use third-party services like TikTok API, AI tools, analytics, or cloud hosting. These services have their own privacy practices, so please review them as well.
-          </p>
-        </section>
-
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Changes to This Privacy Policy</h2>
-          <p className="text-gray-700 leading-relaxed">
-            We may update this Privacy Policy from time to time. If changes occur, you will be notified and given the choice to continue using the platform or stop. The choice is yours.
-          </p>
-        </section>
-
-        <section className="bg-green-50 p-6 rounded-lg shadow-sm">
-          <h2 className="font-bold text-xl text-green-900 mb-2">Contact Us</h2>
-          <p className="text-gray-700 leading-relaxed">
-            Questions? Reach out to us at: <br />
-            <span className="font-semibold">Email:</span> support@ecovibes.com <br />
-            <span className="font-semibold">Location:</span> Nairobi, Kenya
-          </p>
-        </section>
+            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+              <CardContent className="p-8 space-y-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                    <Globe className="w-6 h-6" />
+                  </div>
+                  <h2 className="font-bold text-xl text-foreground">Contact Us</h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  Questions about your privacy? We're here to help.
+                </p>
+                <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                  <p className="text-foreground font-medium">Email: <span className="text-primary">privacy@ecopulse.com</span></p>
+                  <p className="text-foreground font-medium">Location: <span className="text-muted-foreground">Nairobi, Kenya</span></p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
-
       <Footer />
-    </>
+    </div>
   );
 };
 

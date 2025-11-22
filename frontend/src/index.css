@@ -2,70 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 95 58% 20%;
+    /* Light Mode - Eco-Futuristic */
+    --background: 128 44% 94%;
+    /* #E8F5E9 - Pale Green */
+    --foreground: 226 51% 8%;
+    /* #0A0F1F - Dark Blue/Black */
+
     --card: 0 0% 100%;
-    --card-foreground: 95 58% 20%;
+    --card-foreground: 226 51% 8%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 95 58% 20%;
-    --primary: 95 58% 23%;
+    --popover-foreground: 226 51% 8%;
+
+    --primary: 145 100% 39%;
+    /* #00C853 - Vibrant Green */
     --primary-foreground: 0 0% 100%;
-    --secondary: 95 35% 68%;
-    --secondary-foreground: 95 58% 20%;
-    --muted: 95 20% 95%;
-    --muted-foreground: 95 10% 45%;
-    --accent: 122 39% 49%;
+
+    --secondary: 122 39% 75%;
+    /* #A5D6A7 - Light Green */
+    --secondary-foreground: 125 55% 24%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 145 100% 39%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 95 20% 85%;
-    --input: 95 20% 85%;
-    --ring: 95 58% 23%;
-    --radius: 0.75rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 95 58% 20%;
-    --sidebar-primary: 95 58% 23%;
+
+    --border: 145 20% 85%;
+    --input: 145 20% 85%;
+    --ring: 145 100% 39%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 226 51% 8%;
+    --sidebar-primary: 145 100% 39%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 95 35% 68%;
-    --sidebar-accent-foreground: 95 58% 20%;
-    --sidebar-border: 95 20% 85%;
-    --sidebar-ring: 95 58% 23%;
+    --sidebar-accent: 128 44% 94%;
+    --sidebar-accent-foreground: 145 100% 39%;
+    --sidebar-border: 145 20% 90%;
+    --sidebar-ring: 145 100% 39%;
   }
 
   .dark {
-    --background: 95 30% 10%;
-    --foreground: 0 0% 98%;
-    --card: 95 25% 15%;
-    --card-foreground: 0 0% 98%;
-    --popover: 95 25% 15%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 95 35% 68%;
-    --primary-foreground: 95 58% 20%;
-    --secondary: 95 58% 23%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 95 20% 20%;
-    --muted-foreground: 95 10% 65%;
-    --accent: 122 39% 49%;
+    /* Dark Mode - Deep Eco */
+    --background: 226 51% 8%;
+    /* #0A0F1F */
+    --foreground: 128 44% 94%;
+
+    --card: 224 45% 12%;
+    /* Slightly lighter than bg */
+    --card-foreground: 128 44% 94%;
+
+    --popover: 224 45% 12%;
+    --popover-foreground: 128 44% 94%;
+
+    --primary: 145 100% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 125 55% 24%;
+    /* #1B5E20 */
+    --secondary-foreground: 128 44% 94%;
+
+    --muted: 224 45% 16%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 145 100% 39%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
+
+    --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
-    --border: 95 20% 25%;
-    --input: 95 20% 25%;
-    --ring: 95 35% 68%;
-    --sidebar-background: 95 30% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 95 35% 68%;
-    --sidebar-primary-foreground: 95 58% 20%;
-    --sidebar-accent: 95 20% 20%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 95 20% 25%;
-    --sidebar-ring: 95 35% 68%;
+
+    --border: 224 45% 20%;
+    --input: 224 45% 20%;
+    --ring: 145 100% 39%;
+
+    --sidebar-background: 226 51% 8%;
+    --sidebar-foreground: 128 44% 94%;
+    --sidebar-primary: 145 100% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 45% 16%;
+    --sidebar-accent-foreground: 145 100% 39%;
+    --sidebar-border: 224 45% 20%;
+    --sidebar-ring: 145 100% 39%;
   }
 }
 
@@ -75,6 +99,31 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', sans-serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
 }

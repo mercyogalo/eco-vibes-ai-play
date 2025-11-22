@@ -1,183 +1,148 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Leaf, Users, Trophy, Video, Calendar, TrendingUp } from "lucide-react";
+import { Leaf, Users, Trophy, Video, Calendar, TrendingUp, ArrowRight, Globe, Sparkles } from "lucide-react";
 import Footer from '../components/Footer';
 
 const Landing = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-sans selection:bg-accent selection:text-accent-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-secondary py-20 px-4 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAxMmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjA1Ii8+PC9nPjwvc3ZnPg==')] opacity-20" />
-        <div className="relative max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
-            Welcome to EcoVibes
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 pb-32">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-background to-background" />
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-8 animate-fade-in backdrop-blur-sm">
+            <Sparkles className="w-4 h-4" />
+            <span className="text-sm font-medium">The Future of Climate Action is Here</span>
+          </div>
+
+          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-8 text-foreground">
+            Eco<span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Vibes</span>
+            <br />
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-light text-muted-foreground">AI Play</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto">
-            Empowering Young Kenyans to Take Climate Action Through AI, Gamification, and Community
+
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+            Join the movement where <span className="text-foreground font-semibold">AI meets Nature</span>.
+            Gamify your impact, create viral eco-content, and connect with Kenya's greenest community.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={() => window.location.href = '/dashboard'} size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-6">
-              Start Learning
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button onClick={() => window.location.href = '/dashboard'} size="lg" className="h-14 px-8 text-lg rounded-full bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25 transition-all hover:scale-105">
+              Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button onClick={() => window.location.href = '/auth'} size="lg" variant="outline" className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 text-lg px-8 py-6">
-              Login / Signup
+            <Button onClick={() => window.location.href = '/auth'} size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-accent/10 hover:border-accent hover:text-accent transition-all">
+              Join Community
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      {/* Features Grid */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-4 text-center">The Challenge</h2>
-          <p className="text-xl text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            Young people in Kenya face critical barriers to environmental engagement
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-border hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center mb-4">
-                  <Leaf className="w-6 h-6 text-destructive" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Awareness Gap</h3>
-                <p className="text-muted-foreground">
-                  Limited environmental education and awareness about climate change impacts in Kenya
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-border hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-destructive" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Low Engagement</h3>
-                <p className="text-muted-foreground">
-                  Young people lack accessible, engaging platforms to participate in climate action
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-border hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-destructive" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Untapped Influence</h3>
-                <p className="text-muted-foreground">
-                  Social media influence for climate awareness remains largely underutilized
-                </p>
-              </CardContent>
-            </Card>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Revolutionizing Eco-Action</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              We've rebuilt environmental engagement from the ground up using cutting-edge tech.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="relative h-full bg-card/50 backdrop-blur-xl border-border/50 hover:border-primary/50 transition-all duration-300 rounded-3xl overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Video className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">AI Content Creator</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Generate viral-ready eco-videos in seconds. Our AI matches your footage with trending sounds and voiceovers.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="relative h-full bg-card/50 backdrop-blur-xl border-border/50 hover:border-accent/50 transition-all duration-300 rounded-3xl overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Trophy className="w-7 h-7 text-accent" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">Gamified Impact</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Level up your profile by completing daily eco-challenges. Earn badges, climb leaderboards, and win real rewards.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="relative h-full bg-card/50 backdrop-blur-xl border-border/50 hover:border-secondary/50 transition-all duration-300 rounded-3xl overflow-hidden">
+                <CardContent className="p-8">
+                  <div className="w-14 h-14 bg-secondary/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Globe className="w-7 h-7 text-secondary-foreground" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3">Global Connection</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Connect with eco-warriors worldwide. Share your journey, join local events, and amplify your voice.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Solution Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-4 text-center">Our Solution</h2>
-          <p className="text-xl text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
-            EcoVibes combines cutting-edge technology with community engagement
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors hover:shadow-lg">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Video className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">AI-Powered Videos</h3>
-                <p className="text-muted-foreground">
-                  Personalized video content with voice narration and trending sounds for viral sharing
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors hover:shadow-lg">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
-                  <Trophy className="w-6 h-6 text-secondary-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Gamification</h3>
-                <p className="text-muted-foreground">
-                  Earn points, badges, and achievements while learning about climate action
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors hover:shadow-lg">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Calendar className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Real-Life Events</h3>
-                <p className="text-muted-foreground">
-                  Join tree planting, trash picking, and workshops in Nairobi to make real impact
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors hover:shadow-lg">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Community Feed</h3>
-                <p className="text-muted-foreground">
-                  Connect with eco-champions, share achievements, and inspire each other
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors hover:shadow-lg">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
-                  <TrendingUp className="w-6 h-6 text-secondary-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">Social Sharing</h3>
-                <p className="text-muted-foreground">
-                  Share directly to TikTok, Instagram, and Twitter with trending hashtags
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-primary/20 hover:border-primary/40 transition-colors hover:shadow-lg">
-              <CardContent className="pt-6">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Leaf className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-card-foreground">EcoChallenges</h3>
-                <p className="text-muted-foreground">
-                  Track daily eco-actions like walking and cycling, compete with friends
-                </p>
-              </CardContent>
-            </Card>
+      {/* Stats Section */}
+      <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2574&auto=format&fit=crop')] opacity-10 bg-cover bg-center mix-blend-overlay" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">10k+</div>
+              <div className="text-primary-foreground/80 text-lg">Active Eco-Warriors</div>
+            </div>
+            <div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">50k+</div>
+              <div className="text-primary-foreground/80 text-lg">Trees Planted</div>
+            </div>
+            <div>
+              <div className="text-5xl md:text-6xl font-bold mb-2">1M+</div>
+              <div className="text-primary-foreground/80 text-lg">Carbon Offset (kg)</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-secondary/20 to-accent/10">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-4">The Impact</h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Making climate education fun, viral, and actionable
+      {/* CTA Section */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto bg-card border border-border rounded-[3rem] p-12 md:p-20 text-center relative shadow-2xl">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-background/50 pointer-events-none rounded-[3rem]" />
+
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 relative z-10">Ready to Make a Difference?</h2>
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto relative z-10">
+            Join the community today and start turning your eco-actions into real-world impact.
           </p>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-card rounded-lg p-8 shadow-lg border border-border">
-              <div className="text-5xl font-bold text-primary mb-2">Fun</div>
-              <p className="text-muted-foreground">Learning through games, challenges, and rewards</p>
-            </div>
-            <div className="bg-card rounded-lg p-8 shadow-lg border border-border">
-              <div className="text-5xl font-bold text-secondary-foreground mb-2">Viral</div>
-              <p className="text-muted-foreground">Social sharing amplifies your environmental message</p>
-            </div>
-            <div className="bg-card rounded-lg p-8 shadow-lg border border-border">
-              <div className="text-5xl font-bold text-accent mb-2">Actionable</div>
-              <p className="text-muted-foreground">Real events and challenges create tangible impact</p>
-            </div>
+
+          <div className="relative z-10">
+            <Button onClick={() => window.location.href = '/auth'} size="lg" className="h-16 px-10 text-xl rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all hover:scale-105">
+              Join EcoVibes Now
+            </Button>
           </div>
-          <Button onClick={() => window.location.href = '/auth'} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-12 py-6">
-            Join EcoVibes Today
-          </Button>
         </div>
       </section>
 
-     <Footer />
+      <Footer />
     </div>
   );
 };

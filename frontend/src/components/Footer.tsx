@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Leaf className="w-8 h-8 text-primary" />
-              <span className="text-2xl font-bold text-foreground">EcoVibes</span>
+              <span className="text-2xl font-bold text-foreground">EcoPulse</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Empowering communities to protect nature through environmental awareness,
@@ -51,7 +51,7 @@ const Footer = () => {
             </ul>
 
             <div className="flex gap-3 mt-4">
-              <a 
+              <a
                 href="https://twitter.com/ecovibes"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -60,7 +60,7 @@ const Footer = () => {
                 <span className="sr-only">Twitter</span>
                 <Twitter className="h-5 w-5" />
               </a>
-              <a 
+              <a
                 href="https://facebook.com/ecovibes"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -69,7 +69,7 @@ const Footer = () => {
                 <span className="sr-only">Facebook</span>
                 <Facebook className="h-5 w-5" />
               </a>
-              <a 
+              <a
                 href="https://linkedin.com/company/ecovibes"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -78,7 +78,7 @@ const Footer = () => {
                 <span className="sr-only">LinkedIn</span>
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a 
+              <a
                 href="https://tiktok.com/@ecovibes"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -94,7 +94,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} EcoVibes. All rights reserved.
+            © {new Date().getFullYear()} EcoPulse. All rights reserved.
           </p>
         </div>
       </div>
