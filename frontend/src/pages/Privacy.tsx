@@ -22,7 +22,7 @@ const PrivacyPolicy = () => {
           </div>
 
           <div className="grid gap-8">
-            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+            <Card className="border-border/50 bg-card border-border">
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -41,7 +41,7 @@ const PrivacyPolicy = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+            <Card className="border-border/50 bg-card border-border">
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
             </Card>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+              <Card className="border-border/50 bg-card border-border">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -76,7 +76,7 @@ const PrivacyPolicy = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+              <Card className="border-border/50 bg-card border-border">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
               </Card>
             </div>
 
-            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+            <Card className="border-border/50 bg-card border-border">
               <CardContent className="p-8 space-y-4">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 rounded-lg bg-primary/10 text-primary">

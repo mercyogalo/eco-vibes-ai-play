@@ -204,7 +204,7 @@ const VideoCreator = () => {
           animate={{ opacity: 1, x: 0 }}
           className="lg:col-span-2"
         >
-          <Card className="border-border bg-white/50 backdrop-blur-sm shadow-sm">
+          <Card className="border-border bg-card border-border shadow-sm">
             <CardHeader>
               <CardTitle>Upload New Content</CardTitle>
               <CardDescription>Share your voice with the world</CardDescription>
@@ -333,7 +333,7 @@ const VideoCreator = () => {
           className="space-y-6"
         >
           {/* Trending Videos */}
-          <Card className="border-border/50 bg-white/50 backdrop-blur-sm h-full">
+          <Card className="border-border/50 bg-card border-border h-full">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-primary" />
@@ -350,7 +350,7 @@ const VideoCreator = () => {
               ) : (
                 <div className="space-y-4">
                   {videos.slice(0, 5).map((video) => (
-                    <div key={video._id} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-border/50 hover:shadow-md transition-all cursor-pointer group">
+                    <div key={video._id} className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border/50 hover:shadow-md transition-all cursor-pointer group">
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                         {getPlatformIcon(video.category)}
                       </div>

@@ -69,7 +69,7 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-white/50 backdrop-blur-sm border-y border-border">
+      <section className="py-20 bg-card border-border border-y border-border">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
@@ -83,7 +83,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="p-6 rounded-2xl bg-white shadow-sm border border-border/50 hover:shadow-md transition-shadow"
+                className="p-6 rounded-2xl bg-card shadow-sm border border-border/50 hover:shadow-md transition-shadow"
               >
                 <div className="flex justify-center mb-4">
                   <div className="p-3 bg-primary/10 rounded-full text-primary">
@@ -120,7 +120,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group p-8 rounded-3xl bg-white border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+              className="group p-8 rounded-3xl bg-card border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300"
             >
               <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 <Leaf className="w-6 h-6" />

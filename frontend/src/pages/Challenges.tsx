@@ -118,7 +118,7 @@ const Challenges = () => {
           animate={{ opacity: 1, x: 0 }}
           className="lg:col-span-2"
         >
-          <Card className="h-full border-border bg-white/50 backdrop-blur-sm">
+          <Card className="h-full border-border bg-card border-border">
             <CardHeader>
               <CardTitle>Log Your Activity</CardTitle>
               <CardDescription>Every step counts towards a greener planet.</CardDescription>
@@ -180,7 +180,7 @@ const Challenges = () => {
         >
           <Card className="border-primary/20 bg-primary/5">
             <CardContent className="pt-6 text-center">
-              <div className="mx-auto bg-white w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-sm">
+              <div className="mx-auto bg-card w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-sm">
                 <Trees className="w-6 h-6 text-primary" />
               </div>
               <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">CO₂ Saved</p>
@@ -193,7 +193,7 @@ const Challenges = () => {
 
           <Card className="border-accent/20 bg-accent/5">
             <CardContent className="pt-6 text-center">
-              <div className="mx-auto bg-white w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-sm">
+              <div className="mx-auto bg-card w-12 h-12 rounded-full flex items-center justify-center mb-3 shadow-sm">
                 <Award className="w-6 h-6 text-accent" />
               </div>
               <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Points Earned</p>

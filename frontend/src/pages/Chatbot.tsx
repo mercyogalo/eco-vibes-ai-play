@@ -91,7 +91,7 @@ const Chatbot = () => {
     return (
         <div className="h-[calc(100vh-4rem)] flex flex-col max-w-5xl mx-auto w-full">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-border/50 bg-white/50 backdrop-blur-sm rounded-t-3xl">
+            <div className="flex items-center justify-between p-6 border-b border-border/50 bg-card border-border rounded-t-3xl">
                 <div className="flex items-center gap-3">
                     <div className="p-3 bg-primary/10 rounded-full">
                         <Bot className="w-6 h-6 text-primary" />
@@ -121,13 +121,13 @@ const Chatbot = () => {
                                 className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                             >
                                 <div className={`flex gap-3 max-w-[80%] md:max-w-[70%] ${message.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-white border border-border text-primary"}`}>
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-card border border-border text-primary"}`}>
                                         {message.role === "user" ? <User className="w-5 h-5" /> : <Leaf className="w-5 h-5" />}
                                     </div>
 
                                     <div className={`p-4 rounded-2xl shadow-sm ${message.role === "user"
                                             ? "bg-primary text-primary-foreground rounded-tr-none"
-                                            : "bg-white border border-border/50 text-foreground rounded-tl-none"
+                                            : "bg-card border border-border/50 text-foreground rounded-tl-none"
                                         }`}>
                                         <p className="text-base leading-relaxed whitespace-pre-wrap">{message.content}</p>
                                     </div>
@@ -143,10 +143,10 @@ const Chatbot = () => {
                             className="flex justify-start"
                         >
                             <div className="flex gap-3">
-                                <div className="w-8 h-8 rounded-full bg-white border border-border flex items-center justify-center">
+                                <div className="w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center">
                                     <Leaf className="w-5 h-5 text-primary" />
                                 </div>
-                                <div className="bg-white border border-border/50 p-4 rounded-2xl rounded-tl-none flex items-center gap-2">
+                                <div className="bg-card border border-border/50 p-4 rounded-2xl rounded-tl-none flex items-center gap-2">
                                     <span className="text-sm text-muted-foreground">Thinking...</span>
                                     <Loader2 className="w-4 h-4 animate-spin text-primary" />
                                 </div>
@@ -157,8 +157,8 @@ const Chatbot = () => {
             </ScrollArea>
 
             {/* Input Area */}
-            <div className="p-6 bg-white/80 backdrop-blur-md border-t border-border rounded-b-3xl">
-                <div className="flex gap-3 items-center bg-white border border-border rounded-full px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+            <div className="p-6 bg-card border-t border-border rounded-b-3xl">
+                <div className="flex gap-3 items-center bg-card border border-border rounded-full px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-primary/20 transition-all">
                     <Input
                         value={input}
                         onChange={(e) => setInput(e.target.value)}

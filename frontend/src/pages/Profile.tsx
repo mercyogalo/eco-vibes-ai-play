@@ -130,7 +130,7 @@ const Profile = () => {
           animate={{ opacity: 1, y: 0 }}
           className="md:col-span-2"
         >
-          <Card className="h-full border-border bg-white/50 backdrop-blur-sm">
+          <Card className="h-full border-border bg-card border-border">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-8">
                 <Avatar className="w-32 h-32 border-4 border-primary/10 shadow-xl">
@@ -193,7 +193,7 @@ const Profile = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="h-full border-border bg-white/50 backdrop-blur-sm">
+          <Card className="h-full border-border bg-card border-border">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Award className="w-6 h-6 text-primary" />

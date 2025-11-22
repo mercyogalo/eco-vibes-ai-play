@@ -114,7 +114,7 @@ const EnvironmentalRadar = () => {
         >
           {filteredPolicies.map((policy) => (
             <motion.div key={policy._id} variants={item}>
-              <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 border-border/50 bg-white/50 backdrop-blur-sm group">
+              <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 border-border/50 bg-card border-border group">
                 <CardHeader className="space-y-4">
                   <div className="flex justify-between items-start gap-2">
                     <Badge

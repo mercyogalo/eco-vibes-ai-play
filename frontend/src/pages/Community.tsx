@@ -109,7 +109,7 @@ const Community = () => {
         {/* Main Feed */}
         <div className="lg:col-span-2 space-y-6">
           {/* Create Post */}
-          <Card className="border-border bg-white/50 backdrop-blur-sm shadow-sm">
+          <Card className="border-border bg-card border-border shadow-sm">
             <CardContent className="pt-6">
               <div className="flex gap-4">
                 <Avatar>
@@ -152,7 +152,7 @@ const Community = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <Card className="border-border/50 hover:border-primary/20 transition-colors bg-white/80 backdrop-blur-sm">
+                  <Card className="border-border/50 hover:border-primary/20 transition-colors bg-card">
                     <CardHeader className="pb-3">
                       <div className="flex items-center space-x-3">
                         <Avatar>

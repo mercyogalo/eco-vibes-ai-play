@@ -101,7 +101,7 @@ const Dashboard = () => {
           { label: "Badges Earned", value: "0", icon: Leaf, color: "text-green-500", bg: "bg-green-500/10" },
           { label: "Next Level", value: `${100 - (profile.total_points % 100)} pts`, icon: TrendingUp, color: "text-purple-500", bg: "bg-purple-500/10" },
         ].map((stat, i) => (
-          <Card key={i} className="border-border/50 bg-white/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300 group">
+          <Card key={i} className="border-border/50 bg-card border-border hover:shadow-lg transition-all duration-300 group">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-xl ${stat.bg} ${stat.color} group-hover:scale-110 transition-transform`}>
@@ -130,7 +130,7 @@ const Dashboard = () => {
             <motion.div
               key={i}
               whileHover={{ y: -5 }}
-              className="relative group overflow-hidden rounded-3xl bg-white border border-border shadow-sm cursor-pointer"
+              className="relative group overflow-hidden rounded-3xl bg-card border border-border shadow-sm cursor-pointer"
               onClick={action.action}
             >
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity ${action.color}`} />
@@ -151,7 +151,7 @@ const Dashboard = () => {
 
       {/* Topic Selection */}
       <motion.div variants={item}>
-        <Card className="border-border bg-white/80 backdrop-blur-sm">
+        <Card className="border-border bg-card">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Leaf className="w-6 h-6 text-primary" />

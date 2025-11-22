@@ -300,7 +300,7 @@ const EcoExposed = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 border-border/50 bg-white/50 backdrop-blur-sm">
+                <Card className="h-full flex flex-col hover:shadow-lg transition-all duration-300 border-border/50 bg-card border-border">
                   <CardHeader>
                     <div className="flex justify-between items-start mb-2">
                       <Badge className={getStatusColor(report.status)} variant="outline">

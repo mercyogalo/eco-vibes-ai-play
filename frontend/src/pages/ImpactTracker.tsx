@@ -191,7 +191,7 @@ const ImpactTracker = () => {
             <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
               <CardContent className="py-12">
                 <div className="text-center space-y-4">
-                  <div className="inline-flex p-4 rounded-full bg-white/50 backdrop-blur-sm shadow-sm">
+                  <div className="inline-flex p-4 rounded-full bg-card border-border shadow-sm">
                     <TrendingUp className="w-12 h-12 text-primary" />
                   </div>
                   <div>
@@ -206,7 +206,7 @@ const ImpactTracker = () => {
           {/* Main Stats Grid */}
           <motion.div variants={item} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {statCards.map((stat) => (
-              <Card key={stat.title} className="hover:shadow-lg transition-all duration-300 border-border/50 bg-white/50 backdrop-blur-sm group">
+              <Card key={stat.title} className="hover:shadow-lg transition-all duration-300 border-border/50 bg-card border-border group">
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     {stat.title}
@@ -225,7 +225,7 @@ const ImpactTracker = () => {
 
           {/* Milestones */}
           <motion.div variants={item}>
-            <Card className="border-border/50 bg-white/50 backdrop-blur-sm">
+            <Card className="border-border/50 bg-card border-border">
               <CardHeader>
                 <CardTitle>Community Milestones</CardTitle>
               </CardHeader>
