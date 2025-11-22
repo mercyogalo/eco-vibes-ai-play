@@ -67,21 +67,21 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex bg-background overflow-hidden">
       {/* Left Side - Image/Branding */}
-      <div className="hidden lg:flex lg:w-1/2 relative bg-primary text-primary-foreground flex-col justify-center items-center p-12">
+      <div className="hidden lg:flex lg:w-1/2 relative bg-slate-900 text-white flex-col justify-center items-center p-12">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80')] bg-cover bg-center opacity-20 mix-blend-overlay" />
         <div className="relative z-10">
-          <div className="flex items-center gap-2 text-2xl font-bold mb-8">
+          <div className="flex items-center gap-2 text-2xl font-bold mb-8 text-white">
             <Leaf className="w-8 h-8" />
             <span>EcoPulse</span>
           </div>
-          <h1 className="text-5xl font-bold leading-tight mb-6">
+          <h1 className="text-5xl font-bold leading-tight mb-6 text-white">
             Join the movement to protect our planet.
           </h1>
-          <p className="text-xl opacity-90">
+          <p className="text-xl opacity-90 text-white">
             Track your impact, report environmental issues, and connect with a community of changemakers.
           </p>
         </div>
-        <div className="absolute bottom-12 left-12 z-10 text-sm opacity-70">
+        <div className="absolute bottom-12 left-12 z-10 text-sm opacity-70 text-white">
           © 2025 EcoPulse. All rights reserved.
         </div>
       </div>
