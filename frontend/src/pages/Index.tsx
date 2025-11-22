@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Leaf, Globe, Shield, Users, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import Orb from "@/components/Orb";
 
 const Index = () => {
   const fadeIn = {
@@ -16,46 +17,56 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
-      {/* Navbar */}
-      <nav className="container mx-auto px-6 py-6 flex justify-between items-center relative z-10">
-        <div className="flex items-center gap-2 text-primary font-bold text-2xl">
-          <Leaf className="w-8 h-8" />
-          <span>EcoPulse</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
-          <Link to="/auth">
-            <Button variant="ghost" className="text-foreground hover:text-primary">Login</Button>
-          </Link>
-          <Link to="/auth">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-              Get Started
-            </Button>
-          </Link>
+      {/* Navbar - Fixed */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2 text-primary font-bold text-2xl">
+            <Leaf className="w-8 h-8" />
+            <span>EcoPulse</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Link to="/auth">
+              <Button variant="ghost" className="text-foreground hover:text-primary">Login</Button>
+            </Link>
+            <Link to="/auth">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
+                Get Started
+              </Button>
+            </Link>
+          </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 md:py-32 relative">
-        <div className="absolute top-0 right-0 -z-10 opacity-10">
-          <Leaf className="w-[600px] h-[600px] text-primary rotate-12" />
+      {/* Hero Section - Full Screen */}
+      <section className="min-h-screen flex items-center justify-center relative px-6">
+        {/* Orb Background Effect */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-40">
+          <div style={{ width: '100%', height: '100%', maxWidth: '1200px', maxHeight: '1200px' }}>
+            <Orb
+              hoverIntensity={0.5}
+              rotateOnHover={true}
+              hue={120}
+              forceHoverState={false}
+            />
+          </div>
         </div>
 
         <motion.div
           initial="hidden"
           animate="visible"
           variants={stagger}
-          className="max-w-4xl mx-auto text-center space-y-8"
+          className="max-w-2xl mx-auto text-center space-y-6 relative z-10"
         >
-          <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
+          <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-tight">
             Empowering Kenya for a <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Greener Future</span>
           </motion.h1>
 
-          <motion.p variants={fadeIn} className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+          <motion.p variants={fadeIn} className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto">
             Join the movement. Track environmental impact, report violations, and connect with a community dedicated to conservation.
           </motion.p>
 
-          <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link to="/auth">
               <Button size="lg" className="text-lg px-8 py-6 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all">
                 Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
