@@ -81,36 +81,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-card border-border border-y border-border">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {[
-              { label: "Active Guardians", value: "2,500+", icon: Users },
-              { label: "Protected Acres", value: "15,000+", icon: Shield },
-              { label: "Reports Resolved", value: "850+", icon: Globe },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="p-6 rounded-2xl bg-card shadow-sm border border-border/50 hover:shadow-md transition-shadow"
-              >
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-primary/10 rounded-full text-primary">
-                    <stat.icon className="w-8 h-8" />
-                  </div>
-                </div>
-                <h3 className="text-4xl font-bold text-foreground mb-2">{stat.value}</h3>
-                <p className="text-muted-foreground font-medium">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Features Preview */}
       <section className="py-24 container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
