@@ -19,19 +19,19 @@ export function FloatingChatbot() {
             <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="fixed bottom-20 right-6 z-40"
+                className="fixed bottom-24 md:bottom-6 right-6 z-[60]"
             >
                 <Button
                     onClick={() => setIsOpen(true)}
                     size="icon"
-                    className="h-14 w-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                    className="h-14 w-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 group relative"
                 >
                     <MessageCircle className="h-6 w-6 text-primary-foreground group-hover:scale-110 transition-transform" />
                     <span className="sr-only">Open AI Assistant</span>
-                </Button>
 
-                {/* Pulse animation */}
-                <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-20" />
+                    {/* Pulse animation */}
+                    <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-20 pointer-events-none" />
+                </Button>
             </motion.div>
 
             {/* Chat Popup */}
