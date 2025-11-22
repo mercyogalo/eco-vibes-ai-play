@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import MobileNav from "./MobileNav";
 import { Leaf } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { FloatingChatbot } from "./FloatingChatbot";
 
 const Layout = () => {
     return (
@@ -21,6 +22,9 @@ const Layout = () => {
                     </div>
                     <ThemeToggle />
                 </header>
+
+                {/* Floating Chatbot Icon */}
+                <FloatingChatbot />
 
                 {/* Page Content */}
                 <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 lg:p-8 pb-24 md:pb-8 w-full max-w-[1600px] mx-auto">

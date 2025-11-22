@@ -20,12 +20,14 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "./ThemeProvider";
+import { Moon, Sun } from "lucide-react";
 
 const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+    const { theme, setTheme } = useTheme();
 
     const links = [
         { name: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
@@ -42,6 +44,10 @@ const Sidebar = () => {
     const handleLogout = async () => {
         await supabase.auth.signOut();
         navigate("/");
+    };
+
+    const toggleTheme = () => {
+        setTheme(theme === "light" ? "dark" : "light");
     };
 
     return (
@@ -109,9 +115,26 @@ const Sidebar = () => {
             </div>
 
             <div className="p-4 border-t border-sidebar-border space-y-2">
-                <div className={cn("flex", isCollapsed ? "justify-center" : "justify-start")}>
-                    <ThemeToggle />
-                </div>
+                <Button
+                    variant="ghost"
+                    className={cn(
+                        "w-full flex items-center gap-3 justify-start hover:bg-sidebar-accent",
+                        isCollapsed && "justify-center px-0"
+                    )}
+                    onClick={toggleTheme}
+                >
+                    {theme === "light" ? (
+                        <>
+                            <Moon className="w-5 h-5" />
+                            {!isCollapsed && <span>Dark Mode</span>}
+                        </>
+                    ) : (
+                        <>
+                            <Sun className="w-5 h-5" />
+                            {!isCollapsed && <span>Light Mode</span>}
+                        </>
+                    )}
+                </Button>
                 <Button
                     variant="ghost"
                     className={cn(
