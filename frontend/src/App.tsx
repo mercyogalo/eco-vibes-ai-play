@@ -17,45 +17,26 @@ import EcoExposed from "./pages/EcoExposed";
 import VideoCreator from "./pages/VideoCreator";
 import ImpactTracker from "./pages/ImpactTracker";
 import NotFound from "./pages/NotFound";
-import Chatbot from "./components/Chatbot";
+import Chatbot from "./pages/Chatbot";
 import TermsOfService from "./pages/Terms";
 import PrivacyPolicy from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
+import Layout from "./components/Layout";
+import { ThemeProvider } from "./components/ThemeProvider";
+
 const AppContent = () => {
-  const location = useLocation();
-  const [user, setUser] = useState(null);
-
- 
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data } = await supabase.auth.getSession();
-      setUser(data.session?.user || null);
-    };
-
-    checkUser();
-
-   
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
-  }, []);
-
- 
-  const hideChatbot = location.pathname === "/auth" || !user;
-
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/terms" element={<TermsOfService />} />
-        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="/auth" element={<Auth />} />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<Index />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/terms" element={<TermsOfService />} />
+      <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+
+      {/* App Routes wrapped in Layout */}
+      <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/events" element={<Events />} />
         <Route path="/community" element={<Community />} />
@@ -64,23 +45,24 @@ const AppContent = () => {
         <Route path="/exposed" element={<EcoExposed />} />
         <Route path="/video-creator" element={<VideoCreator />} />
         <Route path="/impact" element={<ImpactTracker />} />
+        <Route path="/chat" element={<Chatbot />} /> {/* Added Chat route */}
         <Route path="*" element={<NotFound />} />
-      </Routes>
-
-      {!hideChatbot && <Chatbot />}
-    </>
+      </Route>
+    </Routes>
   );
 };
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider defaultTheme="dark">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

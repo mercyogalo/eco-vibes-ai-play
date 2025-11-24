@@ -2,70 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
+    /* Light Mode - White background with green accents */
     --background: 0 0% 100%;
-    --foreground: 95 58% 20%;
-    --card: 0 0% 100%;
-    --card-foreground: 95 58% 20%;
+    /* Pure White */
+    --foreground: 0 0% 0%;
+    /* Pure Black */
+
+    --card: 0 0% 98%;
+    /* Very light gray for cards */
+    --card-foreground: 0 0% 0%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 95 58% 20%;
-    --primary: 95 58% 23%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 145 100% 39%;
+    /* Vibrant Green #00C853 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 95 35% 68%;
-    --secondary-foreground: 95 58% 20%;
-    --muted: 95 20% 95%;
-    --muted-foreground: 95 10% 45%;
-    --accent: 122 39% 49%;
+    /* White text on green */
+
+    --secondary: 0 0% 95%;
+    /* Light gray */
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    /* Very light gray */
+    --muted-foreground: 0 0% 40%;
+    /* Medium gray */
+
+    --accent: 145 80% 45%;
+    /* Lighter green accent */
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 95 20% 85%;
-    --input: 95 20% 85%;
-    --ring: 95 58% 23%;
-    --radius: 0.75rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 95 58% 20%;
-    --sidebar-primary: 95 58% 23%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    /* Light gray borders */
+    --input: 0 0% 95%;
+    --ring: 145 100% 39%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 145 100% 39%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 95 35% 68%;
-    --sidebar-accent-foreground: 95 58% 20%;
-    --sidebar-border: 95 20% 85%;
-    --sidebar-ring: 95 58% 23%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 145 100% 39%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 145 100% 39%;
   }
 
   .dark {
-    --background: 95 30% 10%;
-    --foreground: 0 0% 98%;
-    --card: 95 25% 15%;
-    --card-foreground: 0 0% 98%;
-    --popover: 95 25% 15%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 95 35% 68%;
-    --primary-foreground: 95 58% 20%;
-    --secondary: 95 58% 23%;
+    /* Dark Mode - Pure black with green accents */
+    --background: 0 0% 0%;
+    /* Pure Black */
+    --foreground: 0 0% 100%;
+    /* Pure White */
+
+    --card: 0 0% 5%;
+    /* Very dark gray for cards */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 145 100% 39%;
+    /* Vibrant Green #00C853 */
+    --primary-foreground: 0 0% 0%;
+    /* Black text on green */
+
+    --secondary: 0 0% 15%;
+    /* Dark gray */
     --secondary-foreground: 0 0% 100%;
-    --muted: 95 20% 20%;
-    --muted-foreground: 95 10% 65%;
-    --accent: 122 39% 49%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 95 20% 25%;
-    --input: 95 20% 25%;
-    --ring: 95 35% 68%;
-    --sidebar-background: 95 30% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 95 35% 68%;
-    --sidebar-primary-foreground: 95 58% 20%;
-    --sidebar-accent: 95 20% 20%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 95 20% 25%;
-    --sidebar-ring: 95 35% 68%;
+
+    --muted: 0 0% 10%;
+    /* Very dark gray */
+    --muted-foreground: 0 0% 60%;
+    /* Medium gray */
+
+    --accent: 145 80% 45%;
+    /* Lighter green accent */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    /* Dark gray borders */
+    --input: 0 0% 15%;
+    --ring: 145 100% 39%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 145 100% 39%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 145 100% 39%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 145 100% 39%;
   }
 }
 
@@ -75,6 +112,55 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', sans-serif;
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00C853;
+  /* Vibrant green */
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00C853 transparent;
 }

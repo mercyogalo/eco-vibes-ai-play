@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, TreePine, MapPin, Users, FileSignature, Calendar, TrendingUp } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import { motion } from "framer-motion";
 
 interface ImpactStats {
   totalReports: number;
@@ -146,55 +146,86 @@ const ImpactTracker = () => {
     { value: 50, label: "Acres", achieved: stats.landSaved >= 50 },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2 flex items-center gap-2">
-            <BarChart3 className="w-10 h-10 text-primary" />
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
+            <BarChart3 className="w-8 h-8 text-primary" />
             Impact Tracker
           </h1>
-          <p className="text-muted-foreground text-lg">See the collective impact of our community</p>
+          <p className="text-muted-foreground">Real-time metrics of our collective environmental impact.</p>
         </div>
+      </div>
 
-        {loading ? (
-          <div className="text-center py-12 text-muted-foreground">Loading impact data...</div>
-        ) : (
-          <>
-            {/* Main Stats Grid */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
-              {statCards.map((stat) => (
-                <Card key={stat.title} className="hover:shadow-lg transition">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">
-                      {stat.title}
-                    </CardTitle>
-                    <div className={`p-2 rounded-lg ${stat.bgColor}`}>
-                      <stat.icon className={`w-5 h-5 ${stat.color}`} />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-3xl font-bold mb-1">{stat.value}</div>
-                    <p className="text-xs text-muted-foreground">{stat.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* Total Points Hero */}
-            <Card className="mb-8 bg-gradient-to-r from-primary/10 to-primary/5">
-              <CardContent className="py-8">
-                <div className="text-center">
-                  <TrendingUp className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h2 className="text-4xl font-bold mb-2">{stats.totalPoints.toLocaleString()}</h2>
-                  <p className="text-lg text-muted-foreground">Total Community Points Earned</p>
+      {loading ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="h-32 rounded-xl bg-muted animate-pulse" />
+          ))}
+        </div>
+      ) : (
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="space-y-8"
+        >
+          {/* Total Points Hero */}
+          <motion.div variants={item}>
+            <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+              <CardContent className="py-12">
+                <div className="text-center space-y-4">
+                  <div className="inline-flex p-4 rounded-full bg-card border-border shadow-sm">
+                    <TrendingUp className="w-12 h-12 text-primary" />
+                  </div>
+                  <div>
+                    <h2 className="text-5xl font-bold text-foreground mb-2 tracking-tight">{stats.totalPoints.toLocaleString()}</h2>
+                    <p className="text-xl text-muted-foreground">Total Community Points Earned</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
+          </motion.div>
 
-            {/* Milestones */}
-            <Card>
+          {/* Main Stats Grid */}
+          <motion.div variants={item} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {statCards.map((stat) => (
+              <Card key={stat.title} className="hover:shadow-lg transition-all duration-300 border-border/50 bg-card border-border group">
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">
+                    {stat.title}
+                  </CardTitle>
+                  <div className={`p-2 rounded-lg ${stat.bgColor} group-hover:scale-110 transition-transform`}>
+                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold mb-1 text-foreground">{stat.value}</div>
+                  <p className="text-xs text-muted-foreground">{stat.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </motion.div>
+
+          {/* Milestones */}
+          <motion.div variants={item}>
+            <Card className="border-border/50 bg-card border-border">
               <CardHeader>
                 <CardTitle>Community Milestones</CardTitle>
               </CardHeader>
@@ -203,23 +234,23 @@ const ImpactTracker = () => {
                   {milestones.map((milestone) => (
                     <div
                       key={milestone.label}
-                      className={`p-4 rounded-lg border-2 transition ${
-                        milestone.achieved
-                          ? "border-primary bg-primary/5"
-                          : "border-muted bg-muted/50"
-                      }`}
+                      className={`p-6 rounded-xl border transition-all duration-300 ${milestone.achieved
+                          ? "border-primary bg-primary/5 shadow-sm"
+                          : "border-border bg-muted/20 opacity-70"
+                        }`}
                     >
-                      <div className="text-center">
+                      <div className="text-center space-y-2">
                         <div
-                          className={`text-3xl font-bold mb-1 ${
-                            milestone.achieved ? "text-primary" : "text-muted-foreground"
-                          }`}
+                          className={`text-3xl font-bold ${milestone.achieved ? "text-primary" : "text-muted-foreground"
+                            }`}
                         >
                           {milestone.value}
                         </div>
-                        <p className="text-sm text-muted-foreground">{milestone.label}</p>
+                        <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">{milestone.label}</p>
                         {milestone.achieved && (
-                          <div className="mt-2 text-xs text-primary font-semibold">✓ ACHIEVED</div>
+                          <div className="inline-flex items-center gap-1 text-xs text-primary font-bold bg-primary/10 px-2 py-1 rounded-full">
+                            <span>✓ ACHIEVED</span>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -227,20 +258,9 @@ const ImpactTracker = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Impact Statement */}
-            <Card className="mt-8 bg-muted/50">
-              <CardContent className="py-8">
-                <p className="text-center text-lg text-muted-foreground">
-                  Together, our community has made a <span className="font-bold text-primary">measurable impact</span> on
-                  environmental protection. Every action counts, and these numbers prove that{" "}
-                  <span className="font-bold text-primary">Gen Z is taking charge</span> of our planet's future.
-                </p>
-              </CardContent>
-            </Card>
-          </>
-        )}
-      </div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
