@@ -42,7 +42,12 @@ const challengeSchema = new mongoose.Schema(
       default: "medium",
     },
     createdBy: String,
-    joinedUsers: [String],
+    joinedUsers: [
+      {
+        userId: { type: String },
+        username: { type: String },
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -20,6 +20,8 @@ import NotFound from "./pages/NotFound";
 import Chatbot from "./pages/Chatbot";
 import TermsOfService from "./pages/Terms";
 import PrivacyPolicy from "./pages/Privacy";
+import Challenges from "./pages/Challenges";
+import ChallengeDetail from "./pages/ChallengeDetail";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const AppContent = () => {
         <Route path="/events" element={<Events />} />
         <Route path="/community" element={<Community />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/challenges" element={<Challenges/>} />
+        <Route path="/challenges/:id" element={<ChallengeDetail/>} />
         <Route path="/radar" element={<EnvironmentalRadar />} />
         <Route path="/exposed" element={<EcoExposed />} />
         <Route path="/video-creator" element={<VideoCreator />} />
