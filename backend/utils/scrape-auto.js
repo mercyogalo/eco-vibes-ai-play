@@ -7,36 +7,18 @@ const Policy = require("../models/policy");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-// Boilerplate phrases to skip
-const boilerplate = [
-  "national environment management authority",
-  "nema is responsible",
-  "kenya forest service",
-  "kenya law",
-  "standard media",
-  "nation media"
-];
-
-// Function to check if content is boilerplate
-function isBoilerplate(text) {
-  const lower = text.toLowerCase();
-  return boilerplate.some(bp => lower.includes(bp));
-}
-
 module.exports = async function runScraper() {
   try {
     const scrapedList = await scrape();
     const newPolicies = [];
 
     for (const p of scrapedList) {
-      // Skip duplicates
       const exists = await Policy.findOne({ link: p.link });
       if (exists) continue;
 
       let text = "";
       let date = p.date || null;
 
-      // Fetch full content (PDF, DOCX, or HTML)
       try {
         if (p.link.endsWith(".pdf") || p.link.endsWith(".docx") || p.link.endsWith(".doc")) {
           text = await readFile(p.link);
@@ -50,29 +32,25 @@ module.exports = async function runScraper() {
         continue;
       }
 
-      // Skip boilerplate content
-      if (isBoilerplate(text)) {
-        console.log("Skipped boilerplate content:", p.link);
+     
+      let status = "BOILERPLATE";
+      try {
+        status = await classifyPolicy(text, p.link);
+        if (status === "BOILERPLATE") {
+          console.log("Skipped boilerplate/irrelevant content:", p.link);
+          continue;
+        }
+      } catch {
+        status = "BOILERPLATE";
         continue;
       }
 
-      // Classify policy (positive/negative)
-      let status = "UNKNOWN";
-      try {
-        status = await classifyPolicy(text);
-        if (!["positive", "negative", "UNKNOWN"].includes(status.toLowerCase())) {
-          status = "UNKNOWN";
-        }
-      } catch {
-        status = "UNKNOWN";
-      }
-
-      // Summarize policy and get AI-generated title
+      
       let summaryObj;
       try {
-        summaryObj = await summarizePolicy(text);
+        summaryObj = await summarizePolicy(text, status);
 
-        // Skip generic AI titles
+        
         if (!summaryObj.title || !summaryObj.summary || summaryObj.title === "Environmental Policy Update") {
           console.warn("Skipped due to generic AI title:", p.link);
           continue;
@@ -82,7 +60,7 @@ module.exports = async function runScraper() {
         continue;
       }
 
-      // Generate video
+      
       let video = "";
       try {
         video = await generateVideo(summaryObj.summary, summaryObj.title);
@@ -90,13 +68,13 @@ module.exports = async function runScraper() {
         video = "";
       }
 
-      // Save policy to database
+      
       try {
         const saved = await Policy.create({
           title: summaryObj.title,
           summary: summaryObj.summary,
           source: p.source,
-          date: date || new Date(), 
+          date: date || new Date(),
           videoPath: video,
           status: status.toUpperCase(),
           progress: p.progress || "UNKNOWN",
