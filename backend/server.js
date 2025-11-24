@@ -14,7 +14,10 @@ const app = express();
 dotenv.config();
 
 
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:8080", "https://eco-vibes-ai-play-1.onrender.com"]
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads")); 

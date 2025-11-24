@@ -48,9 +48,10 @@ async function generateGeminiResponse(query, history = []) {
           "X-Title": "EcoPulse Assistant",
         },
       }
-    );
+    );   
 
     return response.data.choices[0].message.content;
+   
   } catch (error) {
     console.error("Gemini API Error:", {
       message: error.message,
