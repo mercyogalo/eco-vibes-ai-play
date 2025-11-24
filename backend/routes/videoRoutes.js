@@ -254,8 +254,14 @@ router.post("/challenges/:id/join", async (req, res) => {
       });
     }
 
-    // Check if user already joined
-    if (challenge.joinedUsers.includes(userId)) {
+    // Check if user already joined. Support legacy string ids and new {userId, username} objects
+    const alreadyJoined = challenge.joinedUsers.some((u) => {
+      if (!u) return false;
+      if (typeof u === "string") return u === userId;
+      return u.userId === userId;
+    });
+
+    if (alreadyJoined) {
       return res.status(400).json({
         success: false,
         error: "You have already joined this challenge",
@@ -263,7 +269,9 @@ router.post("/challenges/:id/join", async (req, res) => {
     }
 
     challenge.participants += 1;
-    challenge.joinedUsers.push(userId);
+    // Save username if provided, otherwise store userId only in object
+    const userObj = username ? { userId, username } : { userId, username: userId };
+    challenge.joinedUsers.push(userObj);
     await challenge.save();
 
     res.json({

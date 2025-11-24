@@ -3,9 +3,13 @@ const cheerio = require("cheerio");
 
 const pages = [
   "https://nema.go.ke/category/enforcement/",
-  "https://kenyalaw.org/caselaw/cases/",
+  "https://new.kenyalaw.org/bills/",
   "https://nation.africa/environment",
-  "https://www.standardmedia.co.ke/environment"
+  "https://www.standardmedia.co.ke/environment",
+  "https://nema.go.ke/laws-and-guidelines/emca-regulations-review-2023/",
+  "https://new.kenyalaw.org/judgments/court-class/environment-and-land-tribunals/",
+  "https://new.kenyalaw.org/gazettes/2025",
+  "https://kijaniresilience.org/2025/02/19/preserving-kenyas-hidden-gem-the-story-of-oloolua-forest/"
 ];
 
 async function scrapeSingle(url) {

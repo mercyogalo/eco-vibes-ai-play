@@ -51,9 +51,7 @@ const Navbar = () => {
                 <Link to="/events" className={`hover:text-secondary transition ${isActive("/events") ? "text-secondary font-semibold" : ""}`}>
                   Events
                 </Link>
-                <Link to="/challenges" className={`hover:text-secondary transition ${isActive("/challenges") ? "text-secondary font-semibold" : ""}`}>
-                  EcoChallenges
-                </Link>
+                
                 <Link to="/community" className={`hover:text-secondary transition ${isActive("/community") ? "text-secondary font-semibold" : ""}`}>
                   Community
                 </Link>

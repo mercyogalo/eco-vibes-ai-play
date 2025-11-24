@@ -8,13 +8,17 @@ const policyRoutes = require("./routes/policyRoutes");
 const videoRoutes = require("./routes/videoRoutes"); 
 const cron = require("node-cron");
 const runScraper = require("./utils/scrape-auto");
+const tiktokRoutes = require("./routes/tiktokRoutes");
 
 const app = express();
 
 dotenv.config();
 
 
-app.use(cors());
+app.use(cors({
+  origin:["http://localhost:8080", "https://eco-vibes-ai-play-1.onrender.com"]
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads")); 
@@ -24,6 +28,7 @@ app.use("/api", chatRoute);
 app.use("/api/scrape", scrapeRoutes);
 app.use("/api/policies", policyRoutes);
 app.use("/api/videos", videoRoutes); 
+app.use("/api/tiktok", tiktokRoutes); 
 
 
 app.get("/", (req, res) => {

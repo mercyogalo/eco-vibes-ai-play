@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Events from "./pages/Events";
-import Challenges from "./pages/Challenges";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
 import EnvironmentalRadar from "./pages/EnvironmentalRadar";
@@ -21,6 +20,8 @@ import NotFound from "./pages/NotFound";
 import Chatbot from "./pages/Chatbot";
 import TermsOfService from "./pages/Terms";
 import PrivacyPolicy from "./pages/Privacy";
+import Challenges from "./pages/Challenges";
+import ChallengeDetail from "./pages/ChallengeDetail";
 
 const queryClient = new QueryClient();
 
@@ -40,9 +41,10 @@ const AppContent = () => {
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/challenges" element={<Challenges />} />
         <Route path="/community" element={<Community />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/challenges" element={<Challenges/>} />
+        <Route path="/challenges/:id" element={<ChallengeDetail/>} />
         <Route path="/radar" element={<EnvironmentalRadar />} />
         <Route path="/exposed" element={<EcoExposed />} />
         <Route path="/video-creator" element={<VideoCreator />} />

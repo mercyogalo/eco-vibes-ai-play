@@ -1,13 +1,14 @@
 const axios = require("axios");
 
-async function generateOpenRouterResponse(query, history = []) {
-  const apiKey = process.env.OPENROUTER_API_KEY;
+async function generateGeminiResponse(query, history = []) {
+  const apiKey = process.env.GEMINI_API_KEY; 
 
   try {
     const response = await axios.post(
-      "https://openrouter.ai/api/v1/chat/completions",
+      "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
       {
-        model: "meta-llama/llama-3-8b-instruct",
+      
+        model: "gemini-2.5-flash", 
         messages: [
        
           {
@@ -47,11 +48,12 @@ async function generateOpenRouterResponse(query, history = []) {
           "X-Title": "EcoPulse Assistant",
         },
       }
-    );
+    );   
 
     return response.data.choices[0].message.content;
+   
   } catch (error) {
-    console.error("OpenRouter Error:", {
+    console.error("Gemini API Error:", {
       message: error.message,
       status: error.response?.status,
       data: error.response?.data,
@@ -60,4 +62,4 @@ async function generateOpenRouterResponse(query, history = []) {
   }
 }
 
-module.exports = generateOpenRouterResponse;
+module.exports = generateGeminiResponse;
