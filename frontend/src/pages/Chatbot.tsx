@@ -60,7 +60,7 @@ const Chatbot = () => {
         try {
             const res = await api.post("/chat", {
                 query: userInput,
-                userId: userProfile?.id,
+                userId: userProfile?.id  || "test-user-123",
             });
 
             const assistantReply = res.data.reply || "I'm sorry, I didn't quite catch that.";
