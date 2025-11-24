@@ -8,6 +8,7 @@ const policyRoutes = require("./routes/policyRoutes");
 const videoRoutes = require("./routes/videoRoutes"); 
 const cron = require("node-cron");
 const runScraper = require("./utils/scrape-auto");
+const tiktokRoutes = require("./routes/tiktokRoutes");
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use("/api", chatRoute);
 app.use("/api/scrape", scrapeRoutes);
 app.use("/api/policies", policyRoutes);
 app.use("/api/videos", videoRoutes); 
+app.use("/api/tiktok", tiktokRoutes); 
 
 
 app.get("/", (req, res) => {
